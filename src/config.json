@@ -1,0 +1,11 @@
+{
+  "api": {
+    "url": "https://python-small-auth.herokuapp.com",
+    "routes": {
+      "login": "/login",
+      "register": "/register",
+      "verify": "/verify",
+      "users": "/users"
+    }
+  }
+}
