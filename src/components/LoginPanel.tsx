@@ -1,9 +1,10 @@
-import React, { useRef, useState } from "react";
-import { useAppDispatch } from "../store/hooks";
+import React, { useEffect, useRef, useState } from "react";
+import { useAppDispatch, useAppSelector } from "../store/hooks";
 import { authService } from "../services/auth.service";
 import { login } from "../store/reducers/auth";
 import { TOKEN } from "./constants";
 import { AiOutlineUser, AiFillLock } from "react-icons/ai";
+import { loading, loaded, loadingState } from "../store/reducers/loading";
 
 import {
   Button,
@@ -16,6 +17,7 @@ import {
   PageStyle,
   SignUp,
   Title,
+  HiddenUsersLink,
   Wrapper,
 } from "../styled-components/login/PageStyle";
 import { Loader } from "./Loader";
@@ -33,6 +35,7 @@ export const LoginPanel = () => {
   const [invalidInput, setInvalidInput] = useState(false);
   const [registrationSucces, setregistrationSucces] = useState(false);
   const [currentMode, setcurrentMode] = useState(Modes.LOGIN);
+  const currentLoadingState = useAppSelector(loadingState);
 
   const switchMode = () => {
     setInvalidInput(false);
@@ -47,13 +50,11 @@ export const LoginPanel = () => {
   };
 
   const handleLogin = () => {
-    setIsLoading(true);
+    dispatch(loading());
     authService
       .login(loginRef.current?.value || "", passwordRef.current?.value || "")
       .then((token) => {
         localStorage.setItem(TOKEN, token);
-        console.log(token);
-
         dispatch(
           login({
             token: token,
@@ -61,28 +62,27 @@ export const LoginPanel = () => {
           })
         );
       })
-      .then(() => setIsLoading(false))
+      .then(() => dispatch(loaded()))
       .catch((err) => {
         setInvalidInput(true);
-        setIsLoading(false);
+        dispatch(loaded());
       });
   };
 
   const handleRegister = () => {
     if (loginRef.current!.value == "") return;
     if (passwordRef.current!.value == "") return;
-    setIsLoading(true);
+    dispatch(loading());
     authService
       .register(loginRef.current?.value || "", passwordRef.current?.value || "")
       .then(() => {
         clearInputs();
         setregistrationSucces(true);
-        setIsLoading(false);
       })
       .catch((err) => {
         setInvalidInput(true);
-        setIsLoading(false);
-      });
+      })
+      .finally(() => dispatch(loaded()));
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -94,7 +94,6 @@ export const LoginPanel = () => {
 
   return (
     <PageStyle>
-      {isLoading && <Loader />}
       <Wrapper>
         <Title>{currentMode}</Title>
         <Info>
@@ -120,8 +119,6 @@ export const LoginPanel = () => {
               <Input
                 placeholder="Type your username"
                 type="text"
-                name="login"
-                autoComplete="login"
                 ref={loginRef}
               />
             </Container>
@@ -164,6 +161,9 @@ export const LoginPanel = () => {
           )}
         </SignUp>
       </Wrapper>
+      <HiddenUsersLink
+        href="https://python-small-auth.herokuapp.com/users"
+        target="_blank"></HiddenUsersLink>
     </PageStyle>
   );
 };

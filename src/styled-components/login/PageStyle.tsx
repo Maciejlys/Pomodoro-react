@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const PageStyle = styled.div`
-  background-image: url("./img/bg.jpg");
   width: 100%;
   min-height: 100vh;
   display: -webkit-box;
@@ -12,9 +11,6 @@ export const PageStyle = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
 
   input {
     outline: none;
@@ -45,7 +41,6 @@ export const Wrapper = styled.div`
 
 export const Title = styled.span`
   display: block;
-  font-family: Poppins-Bold;
   font-size: 39px;
   color: #333333;
   line-height: 1.2;
@@ -60,7 +55,6 @@ export const InputWrapper = styled.div`
 `;
 
 export const Input = styled.input`
-  font-family: Poppins-Medium;
   font-size: 16px;
   color: #333333;
   line-height: 1.2;
@@ -72,7 +66,6 @@ export const Input = styled.input`
 `;
 
 export const LabelInput = styled.span`
-  font-family: Poppins-Regular;
   font-size: 14px;
   color: #333333;
   line-height: 1.5;
@@ -125,7 +118,6 @@ export const Button = styled.div`
   }
 
   button {
-    font-family: Poppins-Medium;
     font-size: 16px;
     color: #fff;
     line-height: 1.2;
@@ -148,7 +140,6 @@ export const Button = styled.div`
 `;
 
 export const Container = styled.div`
-  font-family: "Arial";
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -186,18 +177,25 @@ export const SignUp = styled.div`
   align-items: center;
 
   span {
-    font-family: Poppins-Regular;
     font-size: 14px;
     line-height: 1.5;
     color: #666666;
   }
 
   button {
-    font-family: Poppins-Regular;
     font-size: 14px;
     line-height: 1.5;
     color: #333333;
     text-transform: uppercase;
     cursor: pointer;
   }
+`;
+
+export const HiddenUsersLink = styled.a`
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  background-color: transparent;
+  width: 50px;
+  height: 50px;
 `;
