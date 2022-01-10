@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/Pomodoro-react/static/js/main.c90c7b33.js",
+    "main.js": "/Pomodoro-react/static/js/main.4a1e7f5f.js",
     "index.html": "/Pomodoro-react/index.html",
-    "main.c90c7b33.js.map": "/Pomodoro-react/static/js/main.c90c7b33.js.map"
+    "main.4a1e7f5f.js.map": "/Pomodoro-react/static/js/main.4a1e7f5f.js.map"
   },
   "entrypoints": [
-    "static/js/main.c90c7b33.js"
+    "static/js/main.4a1e7f5f.js"
   ]
 }
