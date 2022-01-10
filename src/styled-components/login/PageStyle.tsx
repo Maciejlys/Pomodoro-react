@@ -37,6 +37,15 @@ export const Wrapper = styled.div`
   border-radius: 10px;
   overflow: hidden;
   padding: 55px;
+  animation: fadein 5s;
+  @keyframes fadein {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 `;
 
 export const Title = styled.span`
@@ -46,6 +55,15 @@ export const Title = styled.span`
   line-height: 1.2;
   text-align: center;
   padding-bottom: 20px;
+  animation: fadein 2s;
+  @keyframes fadein {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 `;
 
 export const InputWrapper = styled.div`
@@ -111,10 +129,6 @@ export const Button = styled.div`
     background: linear-gradient(right, #00dbde, #fc00ff, #00dbde, #fc00ff);
     top: 0;
     left: -100%;
-    -webkit-transition: all 0.4s;
-    -o-transition: all 0.4s;
-    -moz-transition: all 0.4s;
-    transition: all 0.4s;
   }
 
   button {

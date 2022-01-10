@@ -24,7 +24,7 @@ export const authService = {
   },
 
   register: async (userName: string, password: string): Promise<void> => {
-    const res = await httpClient.post(routes.register, {
+    await httpClient.post(routes.register, {
       userName,
       password,
     });

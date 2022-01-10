@@ -1,10 +1,10 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../store/hooks";
+import React, { useRef, useState } from "react";
+import { useAppDispatch } from "../store/hooks";
 import { authService } from "../services/auth.service";
 import { login } from "../store/reducers/auth";
 import { TOKEN } from "./constants";
 import { AiOutlineUser, AiFillLock } from "react-icons/ai";
-import { loading, loaded, loadingState } from "../store/reducers/loading";
+import { loading, loaded } from "../store/reducers/loading";
 
 import {
   Button,
@@ -20,7 +20,6 @@ import {
   HiddenUsersLink,
   Wrapper,
 } from "../styled-components/login/PageStyle";
-import { Loader } from "./Loader";
 
 enum Modes {
   LOGIN = "Login",
@@ -31,16 +30,14 @@ export const LoginPanel = () => {
   const dispatch = useAppDispatch();
   const loginRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
-  const [isLoading, setIsLoading] = useState(false);
   const [invalidInput, setInvalidInput] = useState(false);
   const [registrationSucces, setregistrationSucces] = useState(false);
   const [currentMode, setcurrentMode] = useState(Modes.LOGIN);
-  const currentLoadingState = useAppSelector(loadingState);
 
   const switchMode = () => {
     setInvalidInput(false);
     setregistrationSucces(false);
-    setcurrentMode(currentMode == Modes.LOGIN ? Modes.REGISTER : Modes.LOGIN);
+    setcurrentMode(currentMode === Modes.LOGIN ? Modes.REGISTER : Modes.LOGIN);
     clearInputs();
   };
 
@@ -62,16 +59,21 @@ export const LoginPanel = () => {
           })
         );
       })
-      .then(() => dispatch(loaded()))
       .catch((err) => {
         setInvalidInput(true);
         dispatch(loaded());
+      })
+      .finally(() => {
+        let timeout: ReturnType<typeof setTimeout> = setTimeout(() => {
+          dispatch(loaded());
+          return clearTimeout(timeout);
+        }, 1000);
       });
   };
 
   const handleRegister = () => {
-    if (loginRef.current!.value == "") return;
-    if (passwordRef.current!.value == "") return;
+    if (loginRef.current!.value === "") return;
+    if (passwordRef.current!.value === "") return;
     dispatch(loading());
     authService
       .register(loginRef.current?.value || "", passwordRef.current?.value || "")
@@ -97,13 +99,13 @@ export const LoginPanel = () => {
       <Wrapper>
         <Title>{currentMode}</Title>
         <Info>
-          {invalidInput && currentMode == Modes.LOGIN && (
+          {invalidInput && currentMode === Modes.LOGIN && (
             <label>Invalid login or password</label>
           )}
-          {invalidInput && currentMode == Modes.REGISTER && (
+          {invalidInput && currentMode === Modes.REGISTER && (
             <label>This username is already taken</label>
           )}
-          {registrationSucces && currentMode == Modes.REGISTER && (
+          {registrationSucces && currentMode === Modes.REGISTER && (
             <label className="register">Registered</label>
           )}
         </Info>

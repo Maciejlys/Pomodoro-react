@@ -6,9 +6,7 @@ import { loading, loaded } from "../store/reducers/loading";
 import { PATH, TOKEN } from "./constants";
 import { authService } from "../services/auth.service";
 
-interface AccessControlProps {}
-
-export const AccessControl: React.FC<AccessControlProps> = ({ children }) => {
+export const AccessControl: React.FC = ({ children }) => {
   const dispatch = useAppDispatch();
   const { pathname } = useLocation();
   const currentState = useAppSelector(selectAuth);
