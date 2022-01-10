@@ -18,10 +18,15 @@ but I am sure I will add this in near future.
 - [create-react-app](https://github.com/facebook/create-react-app)
 - [Axios](https://axios-http.com/)
 - [react-router-dom](https://reactrouter.com/)
-- [redux-toolkit](https://redux-toolkit.js.org/)
 - [styled-components](https://styled-components.com/)
 - [react-icons](https://react-icons.github.io/react-icons/)
 - [react-countdown-circle-timer](https://github.com/vydimitrov/react-countdown-circle-timer)
+
+this was also my first time using [redux-toolkit](https://redux-toolkit.js.org/)
+and it took me a while to get used to it as int the past I was using Context Api for\
+state management because all of my projects were really small and simple.
+Although, this is also very small project, I tried to learn it a bit\
+so I can use it in near future more effectivly.
 
 # What would I change?
 
