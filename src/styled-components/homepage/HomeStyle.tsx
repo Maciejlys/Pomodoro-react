@@ -135,6 +135,7 @@ export const GradientCircle = styled.div<GradientCircleSizeProp>`
 `;
 
 export const HiddenDebugButton = styled.div`
+  cursor: pointer;
   right: 0;
   top: 0;
   position: absolute;
