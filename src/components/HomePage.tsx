@@ -36,9 +36,9 @@ const initialDurations = {
 };
 
 const debugDurations = {
-  work: 1,
-  short: 2,
-  long: 3,
+  work: 2,
+  short: 3,
+  long: 4,
 };
 
 export const HomePage = () => {
