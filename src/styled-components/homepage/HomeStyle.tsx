@@ -133,3 +133,12 @@ export const GradientCircle = styled.div<GradientCircleSizeProp>`
     cursor: pointer;
   }
 `;
+
+export const HiddenDebugButton = styled.div`
+  right: 0;
+  top: 0;
+  position: absolute;
+  background-color: transparent;
+  width: 50px;
+  height: 50px;
+`;

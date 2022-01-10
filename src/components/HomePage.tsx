@@ -10,6 +10,7 @@ import {
   TimerText,
   TimerWrapper,
   WorkDots,
+  HiddenDebugButton,
 } from "../styled-components/homepage/HomeStyle";
 import { Button, Title, Wrapper } from "../styled-components/login/PageStyle";
 import { loading, loaded } from "../store/reducers/loading";
@@ -21,23 +22,43 @@ enum Modes {
   LONG = "Long break",
 }
 
-const durations = {
+enum DebugMode {
+  PROD = "prod",
+  DEBUG = "debug",
+}
+
+const min = 60;
+
+const initialDurations = {
+  work: 25 * min,
+  short: 5 * min,
+  long: 30 * min,
+};
+
+const debugDurations = {
   work: 1,
   short: 2,
   long: 3,
 };
 
 export const HomePage = () => {
+  const [durations, setdurations] = useState(initialDurations);
   const dispatch = useAppDispatch();
   const [isPlaying, setIsPlaying] = useState(false);
   const [duration, setDuration] = useState(durations.work);
   const [currentMode, setCurrentMode] = useState(Modes.WORK);
   const [numberOfWork, setNumberOfWork] = useState<number>(0);
   const [audio, setaudio] = useState(new Audio("audio/ding.mp3"));
+  const [mod, setmod] = useState(DebugMode.PROD);
 
   useEffect(() => {
     audio.volume = 0.1;
   }, []);
+
+  useEffect(() => {
+    setdurations(debugDurations);
+    if (mod == DebugMode.DEBUG) changeToShort();
+  }, [mod]);
 
   const handleLogout = () => {
     dispatch(loading());
@@ -66,6 +87,12 @@ export const HomePage = () => {
   };
   return (
     <PageStyle>
+      <HiddenDebugButton
+        onClick={() => {
+          setmod(DebugMode.DEBUG);
+        }}
+      />
+      {mod === DebugMode.DEBUG && <div>Debug mode</div>}
       <Wrapper>
         <Title key={currentMode}>{currentMode}</Title>
         <TimerWrapper
