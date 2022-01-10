@@ -20,8 +20,6 @@ const Loading = styled.div`
   flex: 1;
   align-items: center;
   justify-content: center;
-  background-image: url("./img/bg.jpg");
-  opacity: 1;
   width: 100%;
   height: 100vh;
   z-index: 1000;
