@@ -32,11 +32,15 @@ export const AccessControl: React.FC = ({ children }) => {
       .finally(() => dispatch(loaded()));
   }, [currentState.auth, dispatch]);
 
+  if (pathname !== PATH.LOGIN && pathname !== PATH.HOME) {
+    return <Navigate to={PATH.LOGIN} />;
+  }
   if (pathname !== PATH.LOGIN && !currentState.auth.isLogged) {
     return <Navigate to={PATH.LOGIN} />;
   }
   if (currentState.auth.isLogged && pathname === PATH.LOGIN) {
     return <Navigate to={PATH.HOME} />;
   }
+
   return <>{children}</>;
 };
