@@ -17,6 +17,7 @@ but I am sure I will add this in near future.
 
 - [create-react-app](https://github.com/facebook/create-react-app)
 - [Axios](https://axios-http.com/)
+- [react-router-dom](https://reactrouter.com/)
 - [redux-toolkit](https://redux-toolkit.js.org/)
 - [styled-components](https://styled-components.com/)
 - [react-icons](https://react-icons.github.io/react-icons/)
