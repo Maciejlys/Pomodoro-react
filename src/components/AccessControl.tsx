@@ -32,7 +32,7 @@ export const AccessControl: React.FC = ({ children }) => {
       .finally(() => dispatch(loaded()));
   }, [currentState.auth, dispatch]);
 
-  if (pathname !== PATH.LOGIN && pathname !== PATH.HOME) {
+  if (pathname == "/*") {
     return <Navigate to={PATH.LOGIN} />;
   }
   if (pathname !== PATH.LOGIN && !currentState.auth.isLogged) {
