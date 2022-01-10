@@ -16,7 +16,7 @@ but I am sure I will add this in near future.
 # What was used in this project?
 
 - [create-react-app](https://github.com/facebook/create-react-app)
-- [Axios](https://axios-http.com/)
+- [axios](https://axios-http.com/)
 - [react-router-dom](https://reactrouter.com/)
 - [styled-components](https://styled-components.com/)
 - [react-icons](https://react-icons.github.io/react-icons/)
