@@ -1,3 +1,40 @@
+# About the project
+
+[Working demo](https://maciejlys.github.io/Pomodoro-react/)
+
+Small pomodoro app to help you stay focused!
+
+Currently default options are:
+
+- work 25 min
+- short break 5min
+- long break 30min
+
+Currently there is no way of changing it to yours preferences,
+but I am sure I will add this in near future.
+
+# What was used in this project?
+
+- [create-react-app](https://github.com/facebook/create-react-app)
+- axios
+- [redux-toolkit](https://redux-toolkit.js.org/)
+- [styled-components](https://styled-components.com/)
+- [react-icons](https://react-icons.github.io/react-icons/)
+- [react-countdown-circle-timer](https://github.com/vydimitrov/react-countdown-circle-timer)
+
+# What would I change?
+
+I think I learned alot while doing this projcet, and thats why \
+if I had to redo it I would definitely make sure to reuse more components\
+I would also make sure that routing is done better from the beginning\
+so I don't have to fix it at the end for few hours.
+
+# Testing
+
+If you wish to test this app, after logging in, press the right top corner to enter\
+debug mode. This changes work time from 25 min to 2 seconds so that you can see all\
+this app has to offer.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
 ## Available Scripts
