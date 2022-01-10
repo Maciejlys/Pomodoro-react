@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 import { AccessControl } from "./components/AccessControl";
 import { PATH } from "./components/constants";
 import { HomePage } from "./components/HomePage";
@@ -12,7 +12,7 @@ import { GlobalStyles } from "./styled-components/GlobalStyles";
 function App() {
   const { isLoading } = useAppSelector(loadingState);
   return (
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
+    <HashRouter>
       <GlobalStyles />
       {isLoading && <Loader />}
       <AccessControl>
@@ -21,7 +21,7 @@ function App() {
           <Route path={PATH.HOME} element={<HomePage />} />
         </Routes>
       </AccessControl>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
