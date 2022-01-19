@@ -4,14 +4,10 @@
 
 Small pomodoro app to help you stay focused!
 
-Currently default options are:
+# To-do
 
-- work 25 min
-- short break 5min
-- long break 30min
-
-Currently there is no way of changing it to yours preferences,
-but I am sure I will add this in near future.
+[X] Add custom settings
+[X] Add responsivness
 
 # What was used in this project?
 
