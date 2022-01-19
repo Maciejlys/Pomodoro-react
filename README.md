@@ -6,8 +6,8 @@ Small pomodoro app to help you stay focused!
 
 # To-do
 
-- [ x ] Add custom settings
-- [ x ] Add responsiveness
+- [x] Add custom settings
+- [x] Add responsiveness
 
 # What was used in this project?
 
