@@ -110,6 +110,13 @@ export const HomePage = () => {
     setisOpened(!isOpened);
   };
 
+  const customStyles = {
+    content: {
+      maxHeight: "50%",
+    },
+    overlay: { zIndex: 1000 },
+  };
+
   return (
     <PageStyle>
       <Wrapper>
@@ -118,7 +125,22 @@ export const HomePage = () => {
         </SettingsButton>
         <Modal
           isOpen={isOpened}
-          style={{ overlay: { zIndex: 1000 } }}
+          style={{
+            content: {
+              borderRadius: "2rem",
+              top: "50%",
+              left: "50%",
+              right: "auto",
+              bottom: "auto",
+              marginRight: "-50%",
+              transform: "translate(-50%, -50%)",
+              height: "90%",
+              width: "70%",
+            },
+            overlay: {
+              zIndex: 1000,
+            },
+          }}
           ariaHideApp={false}>
           <h1 style={{ textAlign: "center" }}>Settings</h1>
           <MainStyles>
