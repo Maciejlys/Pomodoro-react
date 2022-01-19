@@ -111,13 +111,6 @@ export const HomePage = () => {
     setisOpened(!isOpened);
   };
 
-  const customStyles = {
-    content: {
-      maxHeight: "50%",
-    },
-    overlay: { zIndex: 1000 },
-  };
-
   return (
     <PageStyle>
       <Wrapper>
