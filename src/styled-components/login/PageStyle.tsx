@@ -32,7 +32,7 @@ export const PageStyle = styled.div`
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 80%;
   min-width: 15rem;
   max-width: 30rem;
   background: #fff;
