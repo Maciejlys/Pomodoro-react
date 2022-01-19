@@ -83,9 +83,9 @@ export const GradientCircle = styled.div<GradientCircleSizeProp>`
     align-items: center;
     justify-content: center;
     position: relative;
-    z-index: 1;
     border-radius: 50%;
     overflow: hidden;
+    z-index: 1;
     margin: 0 auto;
     box-shadow: 0 5px 30px 0px rgb(3 216 222 / 20%);
     -moz-box-shadow: 0 5px 30px 0px rgba(3, 216, 222, 0.2);
@@ -138,12 +138,10 @@ export const GradientCircle = styled.div<GradientCircleSizeProp>`
   }
 `;
 
-export const HiddenDebugButton = styled.div`
-  cursor: pointer;
+export const SettingsButton = styled.div`
+  position: relative;
+  top: 40px;
+  left: 0;
   right: 0;
-  top: 0;
-  position: absolute;
-  background-color: transparent;
-  width: 50px;
-  height: 50px;
+  cursor: pointer;
 `;

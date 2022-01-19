@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useAppDispatch } from "../store/hooks";
 import { logout } from "../store/reducers/auth";
 import { TOKEN } from "./constants";
@@ -10,11 +10,29 @@ import {
   TimerText,
   TimerWrapper,
   WorkDots,
-  HiddenDebugButton,
+  SettingsButton,
 } from "../styled-components/homepage/HomeStyle";
 import { Button, Title, Wrapper } from "../styled-components/login/PageStyle";
 import { loading, loaded } from "../store/reducers/loading";
 import { FaPause, FaPlay } from "react-icons/fa";
+import { FiSettings } from "react-icons/fi";
+import Modal from "react-modal";
+import {
+  FooterStyles,
+  MainStyles,
+} from "../styled-components/ModalStyles/ModalStyles";
+import Select from "react-select";
+
+const min = 60;
+
+const options = [
+  { value: 5 * min, label: "5 min" },
+  { value: 10 * min, label: "10 min" },
+  { value: 15 * min, label: "15 min" },
+  { value: 20 * min, label: "20 min" },
+  { value: 25 * min, label: "25 min" },
+  { value: 30 * min, label: "30 min" },
+];
 
 enum Modes {
   WORK = "Work",
@@ -22,23 +40,10 @@ enum Modes {
   LONG = "Long break",
 }
 
-enum DebugMode {
-  PROD = "prod",
-  DEBUG = "debug",
-}
-
-const min = 60;
-
 const initialDurations = {
-  work: 25 * min,
-  short: 5 * min,
-  long: 30 * min,
-};
-
-const debugDurations = {
-  work: 2,
-  short: 3,
-  long: 4,
+  work: 25 * 60,
+  short: 5 * 60,
+  long: 30 * 60,
 };
 
 export const HomePage = () => {
@@ -49,16 +54,18 @@ export const HomePage = () => {
   const [currentMode, setCurrentMode] = useState(Modes.WORK);
   const [numberOfWork, setNumberOfWork] = useState<number>(0);
   const [audio, setaudio] = useState(new Audio("audio/ding.mp3"));
-  const [mod, setmod] = useState(DebugMode.PROD);
+  const [isOpened, setisOpened] = useState(false);
+  const [workLength, setworkLength] = useState(initialDurations.work);
+  const [shortLenth, setshortLength] = useState(initialDurations.short);
+  const [longLenth, setlongLength] = useState(initialDurations.long);
 
   useEffect(() => {
     audio.volume = 0.1;
   }, []);
 
   useEffect(() => {
-    setdurations(debugDurations);
-    if (mod == DebugMode.DEBUG) changeToShort();
-  }, [mod]);
+    changeToWork();
+  }, [durations]);
 
   const handleLogout = () => {
     dispatch(loading());
@@ -85,15 +92,79 @@ export const HomePage = () => {
     setCurrentMode(Modes.LONG);
     setDuration(durations.long);
   };
+
+  const workChange = (e: any) => {
+    setworkLength(e.value);
+  };
+
+  const shortChange = (e: any) => {
+    setshortLength(e.value);
+  };
+
+  const longChange = (e: any) => {
+    setlongLength(e.value);
+  };
+
+  const handleSave = () => {
+    setdurations({ work: workLength, short: shortLenth, long: longLenth });
+    setisOpened(!isOpened);
+  };
+
   return (
     <PageStyle>
-      <HiddenDebugButton
-        onClick={() => {
-          setmod(DebugMode.DEBUG);
-        }}
-      />
-      {mod === DebugMode.DEBUG && <div>Debug mode</div>}
       <Wrapper>
+        <SettingsButton>
+          <FiSettings size={30} onClick={() => setisOpened(!isOpened)} />
+        </SettingsButton>
+        <Modal
+          isOpen={isOpened}
+          style={{ overlay: { zIndex: 1000 } }}
+          ariaHideApp={false}>
+          <h1 style={{ textAlign: "center" }}>Settings</h1>
+          <MainStyles>
+            <div>Work length:</div>
+            <Select
+              onChange={workChange}
+              options={options}
+              defaultValue={{
+                value: workLength,
+                label: (workLength / 60).toString() + " min",
+              }}
+              className="select"
+              isClearable={true}
+            />
+            <div>Short break length:</div>
+            <Select
+              onChange={shortChange}
+              options={options}
+              defaultValue={{
+                value: shortLenth,
+                label: (shortLenth / 60).toString() + " min",
+              }}
+              className="select"
+              isClearable={true}
+            />
+            <div>Long break length:</div>
+            <Select
+              onChange={longChange}
+              options={options}
+              defaultValue={{
+                value: longLenth,
+                label: (longLenth / 60).toString() + " min",
+              }}
+              className="select"
+              isClearable={true}
+            />
+          </MainStyles>
+          <FooterStyles>
+            <div className="cancel" onClick={() => setisOpened(!isOpened)}>
+              Cancel
+            </div>
+            <div className="save" onClick={handleSave}>
+              Save
+            </div>
+          </FooterStyles>
+        </Modal>
         <Title key={currentMode}>{currentMode}</Title>
         <TimerWrapper
           key={currentMode + "a"}
