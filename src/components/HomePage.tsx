@@ -107,6 +107,7 @@ export const HomePage = () => {
 
   const handleSave = () => {
     setdurations({ work: workLength, short: shortLenth, long: longLenth });
+    setIsPlaying(false);
     setisOpened(!isOpened);
   };
 
