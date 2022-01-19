@@ -103,7 +103,7 @@ export const HomePage = () => {
             isPlaying={isPlaying}
             duration={duration}
             isLinearGradient={true}
-            size={400}
+            size={350}
             trailColor="transparent"
             strokeWidth={30}
             onComplete={() => {
@@ -130,7 +130,7 @@ export const HomePage = () => {
             ]}>
             {({ remainingTime }) => {
               return (
-                <GradientCircle work={false} size={150}>
+                <GradientCircle work={false} size={30}>
                   <div className="wrapdiv">
                     <div className="color"></div>
                     <div className="button">
@@ -145,7 +145,7 @@ export const HomePage = () => {
         </TimerWrapper>
         <WorkDots>
           {[...Array(numberOfWork)].map((x, i) => (
-            <GradientCircle work={true} key={i} size={50}>
+            <GradientCircle work={true} key={i} size={10}>
               <div className="wrapdiv">
                 <div className="color"></div>
                 <div className="button"></div>

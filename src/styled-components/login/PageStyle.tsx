@@ -32,11 +32,13 @@ export const PageStyle = styled.div`
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 400px;
+  width: 50%;
+  min-width: 15rem;
+  max-width: 30rem;
   background: #fff;
-  border-radius: 10px;
+  border-radius: 2rem;
   overflow: hidden;
-  padding: 55px;
+  padding: 2rem;
   animation: fadein 5s;
   @keyframes fadein {
     from {
@@ -54,7 +56,7 @@ export const Title = styled.span`
   color: #333333;
   line-height: 1.2;
   text-align: center;
-  padding-bottom: 20px;
+  padding-bottom: 2rem;
   animation: fadein 2s;
   @keyframes fadein {
     from {

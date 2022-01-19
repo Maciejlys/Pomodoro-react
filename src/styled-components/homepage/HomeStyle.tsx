@@ -19,12 +19,15 @@ export const TimerText = styled.div`
 `;
 
 export const TimerWrapper = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-tap-highlight-color: transparent;
   border-radius: 50%;
   outline: none;
   border: none;
   background-color: transparent;
   cursor: pointer;
-  margin: 30px 0;
   transition: opacity 1s;
   animation: fadein 2s;
   @keyframes fadein {
@@ -47,6 +50,7 @@ interface GradientCircleSizeProp {
 }
 
 export const WorkDots = styled.div`
+  margin-top: 2rem;
   display: flex;
   flex: 1;
   width: 100%;
@@ -55,14 +59,14 @@ export const WorkDots = styled.div`
   gap: 1rem;
   flex-direction: row;
   flex-wrap: wrap;
-  min-height: 50px;
+  min-height: 2rem;
 `;
 
 export const GradientCircle = styled.div<GradientCircleSizeProp>`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  width: ${(props) => props.size}px;
+  width: ${(props) => props.size}%;
   animation: ${(props) => (props.work ? "fadein" : null)} 2s;
   @keyframes fadein {
     from {
