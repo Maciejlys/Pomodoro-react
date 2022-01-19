@@ -153,7 +153,7 @@ export const HomePage = () => {
                 label: (workLength / 60).toString() + " min",
               }}
               className="select"
-              isClearable={true}
+              isSearchable={false}
             />
             <div>Short break length:</div>
             <Select
@@ -164,7 +164,7 @@ export const HomePage = () => {
                 label: (shortLenth / 60).toString() + " min",
               }}
               className="select"
-              isClearable={true}
+              isSearchable={false}
             />
             <div>Long break length:</div>
             <Select
@@ -175,7 +175,7 @@ export const HomePage = () => {
                 label: (longLenth / 60).toString() + " min",
               }}
               className="select"
-              isClearable={true}
+              isSearchable={false}
             />
           </MainStyles>
           <FooterStyles>
