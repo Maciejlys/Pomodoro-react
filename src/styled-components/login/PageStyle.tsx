@@ -93,7 +93,6 @@ export const LabelInput = styled.span`
 `;
 
 export const Button = styled.div`
-  padding-top: 50px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

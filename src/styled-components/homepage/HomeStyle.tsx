@@ -40,17 +40,8 @@ export const TimerWrapper = styled.button`
   }
 `;
 
-/**
-Interface that definies prop used in GradientCircle style
-@size {number}
-**/
-interface GradientCircleSizeProp {
-  size: number;
-  work: boolean;
-}
-
 export const WorkDots = styled.div`
-  margin-top: 2rem;
+  margin: 1rem 0;
   display: flex;
   flex: 1;
   width: 100%;
@@ -59,14 +50,23 @@ export const WorkDots = styled.div`
   gap: 1rem;
   flex-direction: row;
   flex-wrap: wrap;
-  min-height: 2rem;
+  min-height: 4rem;
 `;
+
+/**
+Interface that definies prop used in GradientCircle style
+@size {number}
+**/
+interface GradientCircleSizeProp {
+  size: string;
+  work: boolean;
+}
 
 export const GradientCircle = styled.div<GradientCircleSizeProp>`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  width: ${(props) => props.size}%;
+  ${(props) => (props.size == "big" ? "width: 30%" : "width: 50px")};
   animation: ${(props) => (props.work ? "fadein" : null)} 2s;
   @keyframes fadein {
     from {

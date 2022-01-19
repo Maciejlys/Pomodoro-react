@@ -130,7 +130,7 @@ export const HomePage = () => {
             ]}>
             {({ remainingTime }) => {
               return (
-                <GradientCircle work={false} size={30}>
+                <GradientCircle work={false} size="big">
                   <div className="wrapdiv">
                     <div className="color"></div>
                     <div className="button">
@@ -145,7 +145,7 @@ export const HomePage = () => {
         </TimerWrapper>
         <WorkDots>
           {[...Array(numberOfWork)].map((x, i) => (
-            <GradientCircle work={true} key={i} size={10}>
+            <GradientCircle work={true} key={i} size="small">
               <div className="wrapdiv">
                 <div className="color"></div>
                 <div className="button"></div>
