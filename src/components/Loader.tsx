@@ -15,7 +15,7 @@ export const Loader = () => {
 
 const Loading = styled.div`
   position: absolute;
-  background: transparent;
+  background: rgba(1, 1, 1, 0.8);
   display: flex;
   flex: 1;
   align-items: center;
